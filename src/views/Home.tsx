@@ -51,12 +51,28 @@ const Home: React.FC = () => {
     navigate(e.key);
     
   }
+ const openChange=(keys:string[])=>{
+  console.log(keys);
+  
+  }
   return (
     <Layout style={{ minHeight: '100vh' }}>
       {/* 侧边栏 */}
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider 
+      collapsible 
+      collapsed={collapsed} 
+      onCollapse={(value) =>{setCollapsed(value);
+      }}
+      >
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={jump} />
+        {/* defaultSelectedKeys={['/user']}表示默认选中user页面 */}
+        <Menu 
+        theme="dark" 
+        defaultSelectedKeys={['/user']} 
+        mode="inline" items={items} 
+        onClick={jump} 
+        onOpenChange={openChange}
+        />
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} >
